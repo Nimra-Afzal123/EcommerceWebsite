@@ -1,0 +1,55 @@
+﻿@model List<Product>
+@{
+    ViewData["Title"] = "fetchProduct";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+<h1>Fetch Product</h1>
+<div class="row">
+	<div class="col-md-12">
+		<a href="@Url.Action("addProduct","Admin")" class="btn btn-primary">Add New Product</a>
+		<table class="table table-bordered table-striped" id="categoryTable">
+			<thead>
+				<tr>
+					<th>Product Name</th>
+					<th>Product Price</th>
+					<th>Product Image</th>
+					<th>Options</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model)
+				{
+					<tr>
+						<td>@item.product_name</td>
+						<td>@item.product_price</td>
+						<td><img src="@("~/product_image/"+item.product_image)" asp-append-version="true"
+							height="40px" width="40px"/></td>
+						<td>
+							<a href="@Url.Action("productDetails","Admin",new{id=item.product_id})" class="btn btn-primary">Details</a>
+
+							<a href="@Url.Action("updateProduct","Admin",new{id=item.product_id})" class="btn btn-warning">Update</a>
+
+							<a href="@Url.Action("deletePermissionProduct","Admin",new{id=item.product_id})" class="btn btn-danger">Delete</a>
+						</td>
+
+					</tr>
+				}
+
+			</tbody>
+		</table>
+	</div>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css" />
+
+<script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
+<script>
+	var js=jQuery.noConflict(true);
+		js(document).ready(function () {
+			js('#categoryTable').DataTable({
+
+			});
+		});
+</script>
+

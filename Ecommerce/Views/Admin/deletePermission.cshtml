@@ -1,0 +1,29 @@
+﻿@model Customer
+@{
+    ViewData["Title"] = "deletePermission";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+<h1 style="color:red">Are You Sure Want To Delete This Customer?</h1>
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <img src="@("~/customer_images/"+Model.customer_image)" asp-append-version="true"
+             width="250px" height="250px" class="my-3" />
+        <ul class="list-group my-3">
+            <li class="list-group-item">Customer Id: @Model.customer_id</li>
+            <li class="list-group-item">Customer Name: @Model.customer_name</li>
+            <li class="list-group-item">Customer Phone: @Model.customer_phone</li>
+            <li class="list-group-item">Customer Email: @Model.customer_email</li>
+            <li class="list-group-item">Customer Password:@Model.customer_password</li>
+            <li class="list-group-item">Customer Gender:@Model.customer_gender</li>
+            <li class="list-group-item">Customer Country: @Model.customer_country</li>
+            <li class="list-group-item">Customer City: @Model.customer_city</li>
+            <li class="list-group-item">Customer Address: @Model.customer_address</li>
+        </ul>
+        <a href="@Url.Action("deleteCustomer","Admin",new {id=Model.customer_id})" class="btn btn-danger">Delete Customer</a>
+        <a href="@Url.Action("fetchCustomer","Admin" )" class="btn btn-warning">Back To List</a>
+    </div>
+    <div class="col-md-2"></div>
+</div>

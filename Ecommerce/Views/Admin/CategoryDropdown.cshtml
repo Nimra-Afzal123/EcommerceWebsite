@@ -1,0 +1,10 @@
+﻿@model List<Category>
+<select class="form-select my-3 form-control" name="cart_id">
+	<option hidden>Select Any Category</option>
+	@foreach (var item in Model)
+	{
+		<option value="@item.category_id" 
+		selected="@item.category_id == ViewBag.selectedCategoryId">@item.category_name</option>
+	}
+</select>
+<!-- this is a partial view of category which we call in add product view to showcategory in drop down -->

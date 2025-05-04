@@ -1,0 +1,56 @@
+﻿@model List<Cart>
+@{
+    ViewData["Title"] = "fetchCart";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+
+<h1>Cart Details</h1>
+<div class="row">
+	<div class="col-md-12">
+		<table class="table table-bordered table-striped" id="categoryTable">
+			<thead>
+				<tr>
+					
+					<th>Product Name</th>
+					<th>Customer Name</th>
+					<th>Product Quantity</th>
+					<th>Status</th>
+					<th>Options</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model)
+				{
+					<tr>
+						
+						<td>@item.products.product_name</td>
+						<td>@item.customers.customer_name</td>
+						<td>@item.product_quantity</td>
+						<td>@item.cart_status</td>
+						<td>
+							
+							<a href="@Url.Action("updateCart","Admin",new{id=item.cart_id})" class="btn btn-warning">Update</a>
+
+							<a href="@Url.Action("deletePermissionCart","Admin",new{id=item.cart_id})" class="btn btn-danger">Delete</a>
+						</td>
+					</tr>
+				}
+
+			</tbody>
+		</table>
+	</div>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css" />
+
+<script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
+<script>
+	var js=jQuery.noConflict(true);
+		js(document).ready(function () {
+			js('#categoryTable').DataTable({
+
+			});
+		});
+</script>
+

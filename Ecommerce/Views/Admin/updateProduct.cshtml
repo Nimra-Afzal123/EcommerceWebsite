@@ -1,0 +1,40 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "updateProduct";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+<h1>Update/Edit Product</h1>
+<div class="row">
+	<div class="col-md-2"></div>
+
+	<div class="col-md-8">
+
+		<form method="post">
+			<input type="hidden" name="product_id" value="@Model.product_id" />
+			<input type="text" placeholder="Enter Product Name" name="product_name" class="form-control my-3" value="@Model.product_name" />
+			<input type="text" placeholder="Enter Product Price" name="product_price" class="form-control my-3" value="@Model.product_price" />
+			<input type="text" placeholder="Enter Product Description" name="product_description" class="form-control my-3" value="@Model.product_description" />
+			@Html.Partial("CategoryDropdown", ViewData["category"])
+			<input type="hidden" name="product_image" value="@Model.product_image" />
+			<input type="submit" value="Update Product" class="form-control my-3 btn btn-primary" />
+
+		</form>
+		<!--For Image updation-->
+		<form method="post" asp-action="ProductProfileImage" enctype="multipart/form-data">
+			<input type="hidden" name="product_id" value="@Model.product_id" />
+			<input type="hidden" name="product_name" value="@Model.product_name" />
+			<input type="hidden" name="product_price" value="@Model.product_price " />
+			<input type="hidden" name="product_description" value="@Model.product_description" />
+			<input type="hidden" name="cart_id" value="@Model.cart_id" />
+			<input type="file" name="product_image" class="form-control my-3" />
+			<img src="@("~/product_image/"+Model.product_image)" asp-append-version="true" style="width:250px;height:250px" />
+			<input type="submit" value="Update Product Image" class="form-control my-3 btn btn-primary" />
+		</form> 
+
+	</div>
+
+
+	<div class="col-md-2"></div>
+</div>
+

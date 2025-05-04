@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewData["Title"] = "addProduct";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+<h1>Add Product</h1>
+
+<div class="row">
+	<div class="col-md-2"></div>
+	<div class="col-md-8">
+		<form method="post" enctype="multipart/form-data">
+			<input type="text" placeholder="Enter Product Name" name="product_name" class="form-control my-3" />
+			<input type="text" placeholder="Enter Product Price" name="product_price" class="form-control my-3" />
+			<input type="text" placeholder="Enter Product Description" name="product_description" class="form-control my-3" />
+			<input type="file"  name="product_image" class="form-control my-3" />
+			@Html.Partial("CategoryDropdown",ViewData["category"])
+			<input type="submit" value="Add Product" class="form-control my-3 btn btn-primary" />
+		</form>
+		<div class="col-md-2"></div>
+	</div>
+
+</div>

@@ -1,0 +1,44 @@
+﻿
+@model List<Product>
+
+    <div class="tab-pane p-0 fade show active" id="top-all-tab" role="tabpanel" aria-labelledby="top-all-link">
+        <div class="products">
+            <div class="row justify-content-center">
+                @foreach (var pro in Model)
+                {
+                    <div class="col-6 col-md-4 col-lg-3 col-xl-5col">
+                        <div class="product product-11 text-center">
+                            <figure class="product-media">
+                                <a href="@Url.Action("productDetails","customer",new{id=pro.product_id})">
+                                    <img src="@("~/product_image/"+pro.product_image)" alt="Product image" class="product-image" asp-append-version="true">
+                                </a>
+
+                                <div class="product-action-vertical">
+                                    <a href="#" class="btn-product-icon btn-wishlist "><span>add to wishlist</span></a>
+                                </div>
+                            </figure>
+
+                            <div class="product-body">
+                                <div class="product-cat">
+                                    <a href="#">@pro.Category.category_name</a>
+                                </div>
+                            <h3 class="product-title"><a href="@Url.Action("productDetails","customer",new{id=pro.product_id})">@pro.product_name</a></h3>
+                                <div class="product-price">
+                                    @pro.product_price
+                                </div>
+                            </div>
+                            <div class="product-action">
+                            <form method="post" asp-action="AddToCart">
+                                <input type="hidden" name="prod_id" value="@pro.product_id" />
+                                <input type="submit" value="Add To Cart" class="btn-product btn-cart" />
+                              
+                            </form>
+                                
+                                
+                             </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>

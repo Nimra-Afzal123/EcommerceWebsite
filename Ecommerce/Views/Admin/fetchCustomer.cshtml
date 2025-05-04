@@ -1,0 +1,57 @@
+﻿@model List<Customer>
+@{
+    ViewData["Title"] = "fetchCustomer";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+<h1>All Customers</h1>
+<div class="row">
+	<div class="col-md-12">
+        <table class="table table-bordered table-striped" id="customerTable">
+            <thead>
+                <tr>
+                    <th>Customer Id</th>
+					<th>Customer Name</th>
+					<th>Customer Phone</th>
+                    <th>Customer Country</th>
+					<th>Customer City</th>
+					<th>Customer Address</th>
+					<th>Options</th>
+                </tr>
+            </thead>
+           <tbody>
+				@foreach (var cust in Model){
+				
+					<tr>
+						<td>@cust.customer_id</td>
+						<td>@cust.customer_name</td>
+						<td>@cust.customer_phone</td>
+						<td>@cust.customer_country</td>
+						<td>@cust.customer_city</td>
+						<td>@cust.customer_address</td>
+						<td>
+							<a href="@Url.Action("customerDetails","Admin",new{id=cust.customer_id})" class="btn btn-primary">Details</a>
+
+							<a href="@Url.Action("updateCustomer","Admin",new{id=cust.customer_id})" class="btn btn-warning">Update</a>
+
+							<a href="@Url.Action("deletePermission","Admin",new{id=cust.customer_id})" class="btn btn-danger">Delete</a>
+						</td>
+					</tr>
+					
+			   }
+           </tbody>
+        </table>
+    </div>
+</div>
+
+<link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css" />
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
+<script>
+	var js=jQuery.noConflict(true);
+		js(document).ready(function () {
+			js('#customerTable').DataTable({
+
+            });
+		});
+</script>

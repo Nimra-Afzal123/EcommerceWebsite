@@ -1,0 +1,128 @@
+﻿@model List<Cart>
+@{
+    ViewData["Title"] = "fetchCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-3">
+    <h2>Your Cart</h2>
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <h4>Items In Cart</h4>
+            @if (Model.Any(m => m.cart_status == 1))
+            {
+                <table class="table table-bordered table-striped text-center">
+                    <thead>
+                        <tr>
+                            <th>Cart Id</th>
+                            <th>Product Name</th>
+                            <th>Product Quantity</th>
+                            <th>Product Price</th>
+                            <th>Option</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Where(m => m.cart_status == 1))
+                        {
+                            <tr>
+                                <td>@item.cart_id</td>
+                                <td>@item.products.product_name</td>
+                                <td>@item.product_quantity</td>
+                                <td>@item.products.product_price</td>
+                                <td>
+                                    <a href="@Url.Action("removeProduct", "Customer", new { id = item.cart_id })" class="btn btn-warning">Remove Product</a>
+                                    <a href="@Url.Action("checkoutProduct", "Customer", new { id = item.cart_id })" class="btn btn-success">Checkout</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p>No active items in cart.</p>
+            }
+
+            <h4 class="mt-4">Ordered Items</h4>
+            @if (Model.Any(m => m.cart_status == 0))
+            {
+                <table class="table table-bordered table-striped text-center">
+                    <thead>
+                        <tr>
+                            <th>Cart Id</th>
+                            <th>Product Name</th>
+                            <th>Product Quantity</th>
+                            <th>Product Price</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Where(m => m.cart_status == 0))
+                        {
+                            <tr>
+                                <td>@item.cart_id</td>
+                                <td>@item.products.product_name</td>
+                                <td>@item.product_quantity</td>
+                                <td>@item.products.product_price</td>
+                                <td><span class="badge bg-success">Order Placed</span></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p>No ordered items yet.</p>
+            }
+
+        </div>
+    </div>
+</div>
+
+
+
+
+@* @model List<Cart>
+@{
+    ViewData["Title"] = "fetchCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-3">
+<h2>Your Cart</h2>
+<div class="row">
+    <div class="col-md-8 ">
+       <table class="table table-bordered table-striped text-center">
+           <thead>
+					<tr>
+                        <th>Cart Id</th>
+						<th>Product Name</th>
+						<th>Product Quantity</th>
+                        <th>Product Price</th>
+						<th>Option</th>
+					</tr>
+           </thead>
+           <tbody>
+               @foreach (var item in Model)
+               {
+                   <tr>
+                       <td>@item.cart_id</td>
+                       <td>@item.products.product_name</td>
+
+                            
+                       <td>@item.product_quantity</td>
+                            <td>@item.products.product_price</td>
+                       <td>
+                           <a href="@Url.Action("removeProduct","Customer",new{id=item.cart_id})" class="btn btn-warning">Remove Product</a>
+                           <a href="@Url.Action("checkoutProduct","Customer",new{id=item.cart_id})" class="btn btn-success">CheckOut</a>
+                       </td>
+                   </tr>
+               }
+           </tbody>
+
+       </table>
+    </div>
+</div>
+</div> *@

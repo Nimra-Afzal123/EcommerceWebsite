@@ -1,0 +1,41 @@
+﻿@model List<Ecommerce.Models.Cart>
+
+@{
+    ViewData["Title"] = "Checkout Product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Checkout</h2>
+
+<form asp-action="PlaceOrder" method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td>@Model[i].products.product_name</td>
+                    <td>@Model[i].products.product_price</td>
+
+                    <td>
+                        <input type="hidden" name="carts[@i].cart_id" value="@Model[i].cart_id" />
+                        <input type="number" name="carts[@i].product_quantity" value="@Model[i].product_quantity" min="1" />
+                    </td>
+
+                    <td>@(Model[i].products.product_price * Model[i].product_quantity)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <p><strong>Grand Total:</strong> @Model.Sum(x => x.products.product_price * x.product_quantity)</p>
+
+    <button type="submit" class="btn btn-primary">Place Order</button>
+</form>

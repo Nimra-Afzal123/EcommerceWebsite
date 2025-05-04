@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewData["Title"] = "feedback";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .contact-container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-control {
+            border-radius: 8px;
+        }
+
+        .btn-custom {
+            background: #ff9800;
+            color: #fff;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+            .btn-custom:hover {
+                background: #e68900;
+            }
+
+        .map-container iframe {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+      
+ 
+    </style>
+</head>
+<body>
+    
+    <div class="container py-5">
+        <h2 class="text-center mb-4">Get In Touch With Us</h2>
+        <div class="row">
+            <div class="col-md-5 contact-container">
+                <h4 class="text-center mb-3">Contact Form</h4>
+                <form method="post">
+                    <input type="text" placeholder="Enter Your Full Name" name="user_name" class="form-control my-2" required />
+                    <textarea placeholder="Enter Your Message" name="user_message" class="form-control my-2" rows="4" required></textarea>
+                    <input type="submit" value="Send Message" class="btn btn-custom w-100" />
+                    <h4 class="text-success">@TempData["message"]</h4>
+                </form>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-6 map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3404.929366516302!2d73.0699918!3d31.416072099999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x392242bef30a05ed%3A0x39e814b7f874c28d!2sGovernment%20College%20University%20Faisalabad!5e0!3m2!1sen!2s!4v1741619171227!5m2!1sen!2s" height="400" allowfullscreen loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

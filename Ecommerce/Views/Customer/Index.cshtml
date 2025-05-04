@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<main class="main">
+            <div class="mb-3 mb-lg-5"></div><!-- End .mb-3 mb-lg-5 -->
+
+
+            <div class="mb-3"></div><!-- End .mb-6 -->
+
+
+            <div class="container-fluid">
+            </div><!-- End .container-fluid -->
+
+            <div class="mb-5"></div><!-- End .mb-5 -->
+
+       
+            <div class="mb-6"></div><!-- End .mb-6 -->
+
+            <div class="container">
+                <div class="heading heading-center mb-3">
+                    <h2 class="title">Our Products</h2><!-- End .title -->
+
+            
+                    <div class="heading-center">
+                        <a href="@Url.Action("fetcchAllProducts","customer")" class="title-link">View All Products<i class="icon-long-arrow-right"></i></a>
+                    </div>
+                </div><!-- End .heading -->
+		    </div>
+
+            @Html.Partial("fetchProducts", ViewData["product"])
+
+
+
+            <div class="container">
+                <hr class="mt-1 mb-6">
+            </div><!-- End .container -->
+
+        </main><!-- End .main -->

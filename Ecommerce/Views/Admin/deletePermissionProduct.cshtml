@@ -1,0 +1,22 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "deletePermissionProduct";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+<h1 style="color:red">Are You Sure Want To Delete This Product?</h1>
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+
+        <ul class="list-group my-3">
+            <li class="list-group-item">Product Id: @Model.product_id</li>
+            <li class="list-group-item">Product Name: @Model.product_name</li>
+
+        </ul>
+        <a href="@Url.Action("deleteProduct","Admin",new {id=Model.product_id})" class="btn btn-danger">Delete Product</a>
+        <a href="@Url.Action("fetchProduct","Admin" )" class="btn btn-warning">Back To List</a>
+    </div>
+    <div class="col-md-2"></div>
+</div>

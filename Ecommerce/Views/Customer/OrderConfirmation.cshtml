@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewData["Title"] = "OrderConfirmation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@if (TempData["message"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["message"]
+    </div>
+}
+
+<p>Thank you for your order!</p>
+<a href="@Url.Action("fetcchAllProducts")" class="btn btn-primary">Continue Shopping</a>

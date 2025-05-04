@@ -1,0 +1,22 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "updateCategory";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+<h1>Update/Edit Category</h1>
+
+<div class="row">
+	<div class="col-md-2"></div>
+	<div class="col-md-8">
+		<form method="post">
+			<input type="hidden" name="category_id" value="@Model.category_id" />
+			<input type="text" placeholder="Enter Category Name" name="category_name" class="form-control my-3"
+			value="@Model.category_name"/>
+
+			<input type="submit" value="Update Category" class="form-control my-3 btn btn-primary" />
+		</form>
+		<div class="col-md-2"></div>
+	</div>
+
+</div>

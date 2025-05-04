@@ -1,0 +1,42 @@
+﻿@model Customer
+@{
+    ViewData["Title"] = "updateCustomer";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+<h1>Update Customer</h1>
+ <div class="row">
+	<div class="col-md-2"></div>
+	<div class="col-md-8">
+<form method="post">
+	<input type="hidden" name="customer_id" value="@Model.customer_id" />
+	<input type="text" placeholder="Enter Your Name" name="customer_name" class="form-control my-3" value="@Model.customer_name" />
+	<input type="text" placeholder="Enter Your Phone" name="customer_phone" class="form-control my-3" value="@Model.customer_phone" />
+	<input type="email" placeholder="Enter Your Email" name="customer_email" class="form-control my-3" value="@Model.customer_email" />
+	<input type="password" placeholder="Enter Your Password" name="customer_password" class="form-control my-3" value="@Model.customer_password" />
+	<input type="text" name="customer_gender" class="form-control my-3" value="@Model.customer_gender"/>
+	<input type="text" placeholder="Enter Your Country" name="customer_country" class="form-control my-3" value="@Model.customer_country" />
+	<input type="text" placeholder="Enter Your City" name="customer_city" class="form-control my-3" value="@Model.customer_city" />
+	<input type="text" placeholder="Enter Your Address" name="customer_address" class="form-control my-3" value="@Model.customer_address" />
+    <input type="hidden" name="customer_image" class="form-control my-3" value="@Model.customer_image" />
+	@* <img src="@("~/customer_image/"+Model.customer_image)" asp-append-version="true" style="width:250px;height:250px" /> *@	
+     <input type="submit" value="Update Customer" class="form-control my-3 btn btn-primary" />
+</form>
+		<!--For Image updation-->
+		<form method="post" asp-action="CustomerProfileImage" enctype="multipart/form-data">
+			<input type="hidden" name="customer_id" value="@Model.customer_id" />
+			<input type="hidden" name="customer_name" value="@Model.customer_name" />
+			<input type="hidden" name="customer_phone" value="@Model.customer_phone"/>
+			<input type="hidden" name="customer_email" value="@Model.customer_email " />
+			<input type="hidden" name="customer_password" value="@Model.customer_password" />
+			<input type="hidden" name="customer_gender"  value="@Model.customer_gender" />
+			<input type="hidden" name="customer_country" value="@Model.customer_country" />
+			<input type="hidden" name="customer_city" value="@Model.customer_city" />
+			<input type="hidden" name="customer_address" value="@Model.customer_address" />
+			<input type="file" name="customer_image" class="form-control my-3" />
+			<img src="@("~/customer_image/"+Model.customer_image)" asp-append-version="true" style="width:250px;height:250px" />
+			<input type="submit" value="Update Profile Picture" class="form-control my-3 btn btn-primary" />
+		</form>
+	</div>
+	<div class="col-md-2"></div>
+</div>

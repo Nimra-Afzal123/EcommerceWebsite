@@ -1,0 +1,12 @@
+﻿@model List<Category>
+@foreach (var cat in Model)
+{
+    <li>
+        <a href="@Url.Action("Index", "Customer", new { categoryId = cat.category_id })">
+            @cat.category_name
+        </a>
+    </li>
+	@* 
+	<input type="hidden" name="cat" value="@cat.category_id" />
+	<li><a href="">@cat.category_name</a></li> *@
+} 

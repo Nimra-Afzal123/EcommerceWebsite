@@ -1,0 +1,24 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "productDetails";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+<h1>Product Details</h1>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <img src="@("~/product_image/"+Model.product_image)" asp-append-version="true"
+             width="250px" height="250px" class="my-3" />
+        <ul class="list-group">
+            <li class="list-group-item">Product Id: @Model.product_id</li>
+            <li class="list-group-item">Product Name: @Model.product_name</li>
+            <li class="list-group-item">Product Price: @Model.product_price</li>
+            <li class="list-group-item">Product Description: @Model.product_description</li>
+            <li class="list-group-item">Category Id:@Model.Category.category_name</li>
+           
+        </ul>
+
+    </div>
+    <div class="col-md-2"></div>
+</div>

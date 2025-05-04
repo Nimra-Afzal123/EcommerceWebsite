@@ -1,0 +1,22 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "deletePermissionCategory";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+<h1 style="color:red">Are You Sure Want To Delete This Category?</h1>
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        
+        <ul class="list-group my-3">
+            <li class="list-group-item">Category Id: @Model.category_id</li>
+            <li class="list-group-item">Category Name: @Model.category_name</li>
+         
+        </ul>
+        <a href="@Url.Action("deleteCategory","Admin",new {id=Model.category_id})" class="btn btn-danger">Delete Category</a>
+        <a href="@Url.Action("fetchCategory","Admin" )" class="btn btn-warning">Back To List</a>
+    </div>
+    <div class="col-md-2"></div>
+</div>

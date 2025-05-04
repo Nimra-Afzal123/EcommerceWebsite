@@ -1,0 +1,52 @@
+﻿@model List<Category>
+@{
+    ViewData["Title"] = "fetchCategory";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+<h1>Fetch Category</h1>
+<div class="row">
+	<div class="col-md-12">
+		<a href="@Url.Action("addCategory","Admin")" class="btn btn-primary">Add New Category</a>
+		<table class="table table-bordered table-striped" id="categoryTable">
+			<thead>
+				<tr>
+					<th>Category Id</th>
+					<th>Category Name</th>
+					
+					<th>Options</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model)
+				{
+					<tr>
+						<td>@item.category_id</td>
+						<td>@item.category_name</td>
+
+						<td>
+							<a href="@Url.Action("updateCategory","Admin",new{id=item.category_id})" class="btn btn-warning">Update</a>
+
+							<a href="@Url.Action("deletePermissionCategory","Admin",new{id=item.category_id})" class="btn btn-danger">Delete</a>
+						</td>
+							
+					</tr>
+				}
+				
+			</tbody>
+		</table>
+	</div>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css" />
+
+<script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
+<script>
+	var js=jQuery.noConflict(true);
+		js(document).ready(function () {
+			js('#categoryTable').DataTable({
+
+			});
+		});
+</script>
+

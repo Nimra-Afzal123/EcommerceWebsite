@@ -1,0 +1,37 @@
+﻿@model List<Admin>
+@{
+    ViewData["Title"] = "Profile";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+<h1>My Profile</h1>
+<div class="row">
+<div class="col-md-2"></div>
+
+<div class="col-md-8">
+
+		<form method="post">
+			<input type="hidden" name="admin_id" value="@Model[0].admin_id" />
+			<input type="text" placeholder="Enter Your Name" name="admin_name" class="form-control my-3" value="@Model[0].admin_name" />
+			<input type="text" placeholder="Enter Your Email" name="admin_email" class="form-control my-3" value="@Model[0].admin_email " />
+			<input type="password" placeholder="Enter Your Password" name="admin_password" class="form-control my-3 " value="@Model[0].admin_password"  />
+			<input type="hidden" name="admin_image" value="@Model[0].admin_image" />
+			<input type="submit" value="Update Profile" class="form-control my-3 btn btn-primary" />
+
+		</form>
+		<!--For Image updation-->
+		<form method="post" asp-action="ChangeProfileImage" enctype="multipart/form-data">
+			<input type="hidden" name="admin_id" value="@Model[0].admin_id" />
+			<input type="hidden"  name="admin_name" value="@Model[0].admin_name" />
+			<input type="hidden" name="admin_email"  value="@Model[0].admin_email " />
+			<input type="hidden" name="admin_password"  value="@Model[0].admin_password" />
+			<input type="file" name="admin_image" class="form-control my-3" />
+			<img src="@("~/admin_image/"+Model[0].admin_image)" asp-append-version="true" style="width:250px;height:250px"/>
+			<input type="submit" value="Update Profile Picture" class="form-control my-3 btn btn-primary"/>
+	    </form>
+
+</div>
+
+	
+   <div class="col-md-2"></div>
+</div>

@@ -1,0 +1,25 @@
+﻿@model Cart
+@{
+    ViewData["Title"] = "deletePermissionCart";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+<h1 style="color:red">Are You Sure Want To Delete This Cart?</h1>
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+
+        <ul class="list-group my-3">
+            <li class="list-group-item">Cart Id: @Model.cart_id</li>
+            <li class="list-group-item">Product Name: @Model.prod_id</li>
+            <li class="list-group-item">Customer Name: @Model.cust_id</li>
+			<li class="list-group-item">Product Quantity: @Model.product_quantity</li>
+            <li class="list-group-item">Cart Status:@Model.cart_status</li>
+        </ul>
+
+        <a href="@Url.Action("deleteCart","Admin",new {id=Model.cart_id})" class="btn btn-danger">Delete Cart</a>
+        <a href="@Url.Action("fetchCart","Admin" )" class="btn btn-warning">Back To List</a>
+    </div>
+    <div class="col-md-2"></div>
+</div>

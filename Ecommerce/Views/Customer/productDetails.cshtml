@@ -1,0 +1,33 @@
+﻿@model List<Product>
+@{
+    ViewData["Title"] = "productDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container mt-3">
+	<h2>Product Details</h2>
+    <div class="mt-3 row">
+        @foreach(var pro in Model)
+        {
+            
+            <div class="col-md-5">
+				<img src="@("~/product_image/"+pro.product_image)" alt="product image" asp-append-version="true" 
+                height="400px" width="400px" />
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+               
+                <h3>Product Name:@pro.product_name</h3>
+                <h4>Product Price:@pro.product_price</h4>
+                <h5>Product Description:@pro.product_description</h5>
+                <a asp-action="AddToCart" asp-route-prod_id="@pro.product_id" class="btn btn-danger">Add to Cart</a>
+
+@*            <a  href="@Url.Action("AddToCart","Customer")" class="btn btn-danger">Add To Cart</a>
+ *@
+           <a class="btn btn-primary">Buy Now</a>
+            </div>
+        }
+       
+    </div>
+</div>
+
+
